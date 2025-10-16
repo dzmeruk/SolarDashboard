@@ -4,3 +4,5 @@ A web-based dashboard to predict solar energy generation for any U.S. location, 
 
 Data sources:
 https://simplemaps.com/data/us-zips
+https://developer.nrel.gov/docs/solar/nsrdb/nsrdb-GOES-aggregated-v4-0-0-download/
+https://api.openweathermap.org/data/3.0/onecall

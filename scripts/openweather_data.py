@@ -58,13 +58,14 @@ def fetch_openweather(lat: float, lon: float) -> pd.DataFrame | None:
         })
 
     df = pd.DataFrame(records)
-    csv_file = DATA_DIR / f"openweather_hourly_forecast_{lat:.4f}_{lon:.4f}.csv"
-    df.to_csv(csv_file, index=False)
 
+    csv_file = DATA_DIR / f"openweather_hourly_forecast_{lat:.4f}_{lon:.4f}.csv"
+    df['unix_timestamp'] = df['timestamp'].astype(int) // 10 ** 9
+    df.to_csv(csv_file, index=False)
     print(f"Saved {len(df)} hourly forecast records to {csv_file.resolve()}")
     return df
 
 if __name__ == "__main__":
     # Example: Hailey, ID
     lat, lon = 43.5196, -114.3153
-    fetch_openweather(lat, lon,)
+    fetch_openweather(lat, lon)

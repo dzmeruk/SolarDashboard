@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a955da4-5c53-4ac9-b3ea-181fd76c9e0c" name="Changes" comment="Committing after setting up environment">
-      <change afterPath="$PROJECT_DIR$/scripts/ZIP_to_coords.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/config_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/nrel_data.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/openweather_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/SystemConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/ZIP_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/general_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/nrel_data_avg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/run_pvlib.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/solar_dashboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test_SysConfig.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/test_pvlib.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nrel_data.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/nrel_data_43.615_-116.2023_2024.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/openweather_hourly_forecast_43.5196_-114.3153.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/ZIP_to_coords.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/nrel_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/nrel_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/openweather_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/openweather_data.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,21 +37,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "dzmeruk"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dzmeruk&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/dzmeruk/SolarDashboard.git",
-    "accountId": "dd534b0b-5907-4811-a7b1-17d5f4e100bc"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dzmeruk/SolarDashboard.git&quot;,
+    &quot;accountId&quot;: &quot;dd534b0b-5907-4811-a7b1-17d5f4e100bc&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="33pzAVElmb21VlxibCc6ed9lok5" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -53,13 +63,21 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.SystemConfig.executor": "Run",
+    "Python.ZIP_data.executor": "Run",
     "Python.ZIP_to_coords.executor": "Run",
+    "Python.ZIP_to_coords_elevation.executor": "Run",
     "Python.config.executor": "Run",
+    "Python.general_test.executor": "Run",
     "Python.nrel_data.executor": "Run",
+    "Python.nrel_data_avg.executor": "Run",
     "Python.openweather_data (2).executor": "Run",
     "Python.openweather_data.executor": "Run",
+    "Python.run_pvlib.executor": "Run",
     "Python.test_NREL_API.executor": "Run",
+    "Python.test_SysConfig.executor": "Run",
     "Python.test_env.executor": "Run",
+    "Python.test_pvlib.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -134,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760036172427</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Committing after setting up environment">
+      <option name="closed" value="true" />
+      <created>1760129390089</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1760129390089</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
