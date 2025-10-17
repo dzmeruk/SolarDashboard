@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a955da4-5c53-4ac9-b3ea-181fd76c9e0c" name="Changes" comment="Simple dashboard is complete and running.">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/config.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,36 +48,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.SystemConfig.executor": "Run",
-    "Python.ZIP_data.executor": "Run",
-    "Python.ZIP_to_coords.executor": "Run",
-    "Python.ZIP_to_coords_elevation.executor": "Run",
-    "Python.config.executor": "Run",
-    "Python.general_test.executor": "Run",
-    "Python.nrel_data.executor": "Run",
-    "Python.nrel_data_avg.executor": "Run",
-    "Python.openweather_data (2).executor": "Run",
-    "Python.openweather_data.executor": "Run",
-    "Python.run_pvlib.executor": "Run",
-    "Python.solar_dashboard.executor": "Run",
-    "Python.solar_dashboard2.executor": "Run",
-    "Python.test_NREL_API.executor": "Run",
-    "Python.test_NREL_API_KEY.executor": "Run",
-    "Python.test_OPENWEATHER_API_KEY.executor": "Run",
-    "Python.test_SysConfig.executor": "Run",
-    "Python.test_env.executor": "Run",
-    "Python.test_pvlib.executor": "Run",
-    "Python.test_run_pvlib_model.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/tgalb/PycharmProjects/SolarDashboard/scripts"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.SystemConfig.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ZIP_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ZIP_to_coords.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ZIP_to_coords_elevation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.config.executor&quot;: &quot;Run&quot;,
+    &quot;Python.general_test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.nrel_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.nrel_data_avg.executor&quot;: &quot;Run&quot;,
+    &quot;Python.openweather_data (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.openweather_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_pvlib.executor&quot;: &quot;Run&quot;,
+    &quot;Python.solar_dashboard.executor&quot;: &quot;Run&quot;,
+    &quot;Python.solar_dashboard2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_NREL_API.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_NREL_API_KEY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_OPENWEATHER_API_KEY.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_SysConfig.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_env.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_pvlib.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test_run_pvlib_model.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/tgalb/PycharmProjects/SolarDashboard/scripts&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\tgalb\PycharmProjects\SolarDashboard\scripts" />
