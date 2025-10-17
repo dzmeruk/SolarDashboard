@@ -1,3 +1,8 @@
+# Allows tests located in "tests" subdirectory to import modules in "scripts"######################
+import path_to_scripts
+path_to_scripts.path_to_scripts()
+###################################################################################################
+
 """
 A diagnostic script to verify the pvlib installation and check for the
 presence of the SingleAxisTracker class.

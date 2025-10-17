@@ -1,22 +1,9 @@
-"""
-A complete, interactive solar power prediction dashboard using Plotly Dash.
 
-This application takes user inputs for a solar PV system, runs the pvlib
-modeling code in the background, and displays the predicted annual and
-monthly energy generation.
-
-To Run:
-1. Make sure you have all required packages installed:
-   pip install dash dash-bootstrap-components pandas pvlib timezonefinderL
-2. Make sure your custom scripts (SystemConfig.py, nrel_data_avg.py, etc.)
-   are in the same directory or accessible on the Python path.
-3. Run this script from your terminal:
-   python solar_dashboard.py
-4. Open a web browser and go to http://127.0.0.1:8050/
-"""
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html, Input, Output, State, no_update
+import pandas as pd
+import plotly.graph_objects as go
 
 # ==============================================================================
 # IMPORT CUSTOM PROJECT MODULES
@@ -62,7 +49,7 @@ app.layout = dbc.Container([
                         html.Label("Tilt (degrees):"),
                         dbc.Input(id="tilt-input", value=20, type="number", min=0, max=90, step=1, style=input_style),
                         html.Label("Azimuth (degrees, 180=South):"),
-                        dbc.Input(id="azimuth-input", value=250, type="number", min=0, max=360, step=1,
+                        dbc.Input(id="azimuth-input", value=180, type="number", min=0, max=360, step=1,
                                   style=input_style),
                     ]),
                     html.Div(id='single-axis-inputs', children=[
@@ -77,10 +64,21 @@ app.layout = dbc.Container([
                     html.Label("System Losses (%):"),
                     dbc.Input(id="losses-input", value=14, type="number", min=0, max=50, step=1, style=input_style),
 
-                    dbc.Button("Calculate Production", id="submit-button", color="primary", className="w-100")
+                    # --- ADDED: Date picker for daily profile ---
+                    html.Label("Select Day for Hourly Profile:"),
+                    dcc.DatePickerSingle(
+                        id='day-picker',
+                        min_date_allowed=pd.to_datetime('2023-01-01'),
+                        max_date_allowed=pd.to_datetime('2023-12-31'),
+                        initial_visible_month=pd.to_datetime('2023-06-21'),
+                        date=pd.to_datetime('2023-06-21').date(),
+                        style={"width": "100%"}
+                    ),
+
+                    dbc.Button("Calculate Production", id="submit-button", color="primary", className="w-100 mt-3")
                 ])
             ]),
-            md=4  # This column takes 4 of 12 grid units on medium screens
+            md=4
         ),
 
         # --- Output Column ---
@@ -94,12 +92,15 @@ app.layout = dbc.Container([
                         children=[
                             html.H3(id="total-kwh-output", className="text-center"),
                             html.Div(id="error-output", className="text-danger text-center"),
-                            dcc.Graph(id="monthly-graph")
+                            dcc.Graph(id="monthly-graph"),
+                            # --- ADDED: Daily graph and data store ---
+                            dcc.Graph(id="daily-graph"),
+                            dcc.Store(id='results-store')
                         ]
                     )
                 ])
             ]),
-            md=8  # This column takes 8 of 12 grid units
+            md=8
         )
     ])
 ], fluid=True)
@@ -128,28 +129,33 @@ def toggle_conditional_inputs(tracking_type):
     Output('total-kwh-output', 'children'),
     Output('monthly-graph', 'figure'),
     Output('error-output', 'children'),
+    # --- ADDED: Output to data store ---
+    Output('results-store', 'data'),
     Input('submit-button', 'n_clicks'),
     [State('zip-input', 'value'),
      State('capacity-input', 'value'),
      State('tracking-input', 'value'),
+     State('tilt-input', 'value'), # ADDED this missing State
      State('azimuth-input', 'value'),
      State('axis-tilt-input', 'value'),
      State('max-angle-input', 'value'),
      State('losses-input', 'value')]
 )
-def update_results(n_clicks, zip_code, capacity, tracking, azimuth, axis_tilt, max_angle, losses):
+def update_results(n_clicks, zip_code, capacity, tracking, tilt, azimuth, axis_tilt, max_angle, losses):
     # Don't run the model when the app first loads
     if n_clicks is None or n_clicks == 0:
-        return "", {}, ""
+        # --- MODIFIED: Return value for the new data store output ---
+        return "", {}, "", None
 
     try:
         # 1. Create the SystemConfig object from the form inputs
         config = SystemConfig(
             zip_code=str(zip_code),
             system_capacity_kw=float(capacity),
-            module_efficiency=0.20,  # This isn't used in the model but is part of the class
-            system_losses=float(losses) / 100,  # Convert from % to decimal
-            tilt_deg=float(axis_tilt),
+            module_efficiency=0.20,
+            system_losses=float(losses) / 100,
+            # --- MODIFIED: Use correct tilt value based on tracking type ---
+            tilt_deg=float(axis_tilt) if tracking == 'single-axis' else float(tilt),
             azimuth_deg=float(azimuth),
             tracking_type=tracking,
             max_angle=float(max_angle)
@@ -163,28 +169,69 @@ def update_results(n_clicks, zip_code, capacity, tracking, azimuth, axis_tilt, m
         monthly_kwh = ac_power.resample('ME').sum() / 1000
 
         # 4. Create the Plotly figure (bar chart)
-        figure = {
-            'data': [{
-                'x': monthly_kwh.index.strftime('%b'),
-                'y': monthly_kwh.values,
-                'type': 'bar',
-                'name': 'Monthly Production'
-            }],
-            'layout': {
-                'title': 'Average Monthly Energy Production',
-                'yaxis': {'title': 'Energy (kWh)'},
-                'xaxis': {'title': 'Month'}
-            }
-        }
+        fig_monthly = go.Figure()
+        fig_monthly.add_trace(go.Bar(
+            x=monthly_kwh.index.strftime('%b'),
+            y=monthly_kwh.values,
+            name='Monthly Production'
+        ))
+        fig_monthly.update_layout(
+            title_text='Average Monthly Energy Production',
+            yaxis_title='Energy (kWh)',
+            xaxis_title='Month'
+        )
 
         # 5. Return the results to the output components
         output_text = f"Predicted Annual Generation: {total_kwh:,.0f} kWh"
-        return output_text, figure, ""  # Empty error message
+        # --- MODIFIED: Serialize full results to JSON for the data store ---
+        json_results = ac_power.to_json(date_format='iso', orient='split')
+        return output_text, fig_monthly, "", json_results
 
     except Exception as e:
         # If anything goes wrong, return an error message
         error_message = f"An error occurred: {e}"
-        return "", {}, error_message
+        # --- MODIFIED: Return value for the new data store output ---
+        return "", {}, error_message, None
+
+# --- ADDED: New callback to update the daily graph from stored data ---
+@app.callback(
+    Output('daily-graph', 'figure'),
+    Input('results-store', 'data'),
+    Input('day-picker', 'date')
+)
+def update_daily_graph(json_data, selected_date):
+    # Only run if there is data in the store
+    if json_data is None:
+        return go.Figure().update_layout(title_text='Select a day to view its hourly profile')
+
+    # Convert the stored JSON back to a pandas Series
+    ac_power = pd.read_json(json_data, orient='split', typ='series')
+    # The index is now a datetime object, so convert it to timezone-aware
+    ac_power.index = pd.to_datetime(ac_power.index, utc=True)
+
+    # Filter for the selected day
+    selected_dt = pd.to_datetime(selected_date)
+    daily_data = ac_power[ac_power.index.date == selected_dt.date()]
+
+    # Create the line chart figure
+    fig_daily = go.Figure()
+    if daily_data.empty:
+        fig_daily.update_layout(title_text=f'No production data for {selected_dt.strftime("%b %d")}')
+        return fig_daily
+
+    fig_daily.add_trace(go.Scatter(
+        x=daily_data.index.hour,
+        y=daily_data.values,
+        mode='lines+markers',
+        name='Hourly Production'
+    ))
+    fig_daily.update_layout(
+        title_text=f'Hourly Power Production on {selected_dt.strftime("%b %d")}',
+        yaxis_title='Power (W)',
+        xaxis_title='Hour of the Day',
+        xaxis=dict(tickmode='linear', dtick=2) # Show a tick every 2 hours
+    )
+    return fig_daily
 
 
 # --- Run the application ---

@@ -1,12 +1,15 @@
-# Tries two different ways. First, csv lookup, then geopy
+# Main purpose is to defin get_ZIP_data function
 # Input = ZIP
 # Outut = latitude, longitude, elevation (meters), timezone
+# Tries two different methods to get latitude/longitude. First, looks in uszips file. Then tries with geolocator.
 
 import pandas as pd
 import requests
 from geopy.geocoders import Nominatim
 from config import DATA_DIR
 from timezonefinderL import TimezoneFinder
+
+# Start by defining two functions that are called after lat/long are found.
 
 # first, define function that takes in lat/long and outputs elevation
 def get_elevation(lat: float, lon: float) -> float | None:
@@ -33,6 +36,7 @@ def get_timezone(lat: float, lon: float) -> TimezoneFinder:
 ZIP_df = pd.read_csv(DATA_DIR/"uszips.csv")
 geolocator = Nominatim(user_agent="solar_forecaster")
 
+# Finally, define main function
 def get_ZIP_data(ZIP):
     """
     Input is a ZIP code. Output is (latitude,longitude)

@@ -45,7 +45,8 @@ class SystemConfig:
             f"  Losses: {self.system_losses * 100:.1f}%\n"
             f"  Tilt: {self.tilt_deg}°\n"
             f"  Azimuth: {self.azimuth_deg}°\n"
-            f"  Tracking: {self.tracking_type.capitalize()}"
+            f"  Tracking: {self.tracking_type.capitalize()}\n"
+            f"  Max angle: {self.max_angle}"
         )
 
     def __repr__(self):
