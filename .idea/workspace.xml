@@ -4,22 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a955da4-5c53-4ac9-b3ea-181fd76c9e0c" name="Changes" comment="Model is running. Now need to make dashboard.">
-      <change afterPath="$PROJECT_DIR$/scripts/solar_dashboard2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/path_to_scripts.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_run_pvlib_model.py" afterDir="false" />
+    <list default="true" id="9a955da4-5c53-4ac9-b3ea-181fd76c9e0c" name="Changes" comment="Simple dashboard is complete and running.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/SystemConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/SystemConfig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/ZIP_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/ZIP_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/general_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/nrel_data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/run_pvlib.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/run_pvlib.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/solar_dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/solar_dashboard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test_NREL_API_KEY.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_NREL_API_KEY.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test_OPENWEATHER_API_KEY.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_OPENWEATHER_API_KEY.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test_SysConfig.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_SysConfig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/test_pvlib.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_pvlib.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/config.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +164,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760636802848</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Model is running. Now need to make dashboard.">
+      <option name="closed" value="true" />
+      <created>1760718839209</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1760718839209</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Simple dashboard is complete and running.">
+      <option name="closed" value="true" />
+      <created>1760718871688</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1760718871688</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,6 +197,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Committing after setting up environment" />
     <MESSAGE value="Model is running. Now need to make dashboard." />
-    <option name="LAST_COMMIT_MESSAGE" value="Model is running. Now need to make dashboard." />
+    <MESSAGE value="Simple dashboard is complete and running." />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple dashboard is complete and running." />
   </component>
 </project>
